@@ -20,14 +20,19 @@ class RedisUtil:
         """
         logger.info("开始连接redis...")
         redis = await aioredis.from_url(
-            url=f"redis://{RedisConfig.redis_host}",
-            port=RedisConfig.redis_port,
-            username=RedisConfig.redis_username,
-            password=RedisConfig.redis_password,
-            db=RedisConfig.redis_database,
+            url=f"redis://localhost",
             encoding="utf-8",
             decode_responses=True
-        )
+        )        
+        # redis = await aioredis.from_url(
+        #     url=f"redis://{RedisConfig.redis_host}",
+        #     port=RedisConfig.redis_port,
+        #     username=RedisConfig.redis_username,
+        #     password=RedisConfig.redis_password,
+        #     db=RedisConfig.redis_database,
+        #     encoding="utf-8",
+        #     decode_responses=True
+        # )
         try:
             connection = await redis.ping()
             if connection:
